@@ -54,7 +54,7 @@ export class Search extends React.Component {
                     </div>
                 </div>
                 <div className="search-books-results">
-                    {searchResults && (
+                    {searchResults && searchValue && (
                         <ol className="books-grid">
                             {searchResults.map((book, id) => (
                                 <Book
@@ -67,6 +67,9 @@ export class Search extends React.Component {
                         </ol>
                     )}
                     {emptySearch && <h3>We do not have the book which matches these criteria</h3>}
+                    {!searchValue && !emptySearch && (
+                        <h3>You can search the book by using the seach input</h3>
+                    )}
                 </div>
             </div>
         );

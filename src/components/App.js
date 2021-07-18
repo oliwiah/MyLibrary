@@ -29,9 +29,11 @@ class BooksApp extends React.Component {
     };
 
     render() {
+        const { books } = this.state;
+
         return (
             <div className="app">
-                {this.state.books.length ? (
+                {books.length ? (
                     <BrowserRouter>
                         <Switch>
                             <Route path="/search" render={() => <Search />} />
@@ -43,10 +45,7 @@ class BooksApp extends React.Component {
                                         <div className="list-books-title">
                                             <h1>MyReads</h1>
                                         </div>
-                                        <BookList
-                                            books={this.state.books}
-                                            changeShelf={this.changeShelf}
-                                        />
+                                        <BookList books={books} changeShelf={this.changeShelf} />
                                         <div className="open-search">
                                             <button>Search a book</button>
                                         </div>

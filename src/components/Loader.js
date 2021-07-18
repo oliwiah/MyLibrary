@@ -1,10 +1,10 @@
 import React from 'react';
 
 export const Loader = () => (
-    <div class="spinner">
-        <div class="s s1" />
-        <div class="s s2" />
-        <div class="s s3" />
-        <div class="s s4" />
+    <div className="spinner">
+        <div className="s s1" />
+        <div className="s s2" />
+        <div className="s s3" />
+        <div className="s s4" />
     </div>
 );

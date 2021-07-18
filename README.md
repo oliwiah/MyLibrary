@@ -8,7 +8,7 @@ The project is a bookshelf app which allows the user to select and categorize bo
 
 The project contains 2 routes - the main one under `"/"` and `"/search"`, and any other will result the 404 Error Page view.
 
-## How to start
+## How to launch the app on your machine
 
 1. Clone the repository.
 2. Run below commands :

@@ -12,11 +12,12 @@ export const BookList = (props) => {
     return (
         <div className="list-books-content">
             {shelves.map((shelf, id) => {
+                const booksByShelf = books.filter((book) => book.shelf === shelf.name);
                 return (
                     <div className="bookshelf" key={id}>
                         <h2 className="bookshelf-title">{shelf.title}</h2>
                         <div className="bookshelf-books">
-                            <BookShelf books={books} changeShelf={changeShelf} key={id} />
+                            <BookShelf books={booksByShelf} changeShelf={changeShelf} key={id} />
                         </div>
                     </div>
                 );

@@ -3,6 +3,7 @@ import { Route, Switch, BrowserRouter } from 'react-router-dom';
 import * as BooksAPI from '../requests/BooksAPI';
 import { Search } from './Search';
 import { BookList } from './BookList';
+import { PageNotFound } from './PageNotFound';
 import '../styles/App.css';
 
 class BooksApp extends React.Component {
@@ -10,6 +11,9 @@ class BooksApp extends React.Component {
         books: [],
     };
 
+    // componentDidMount is deprecated but in order to use hooks,
+    // I would need to upgrade React version and I did not know
+    // whether it is acceptable
     componentDidMount() {
         BooksAPI.getAll().then((books) => this.setState({ books }));
     }
@@ -47,6 +51,7 @@ class BooksApp extends React.Component {
                                 </div>
                             )}
                         />
+                        <Route path="*" component={PageNotFound} />
                     </Switch>
                 </BrowserRouter>
             </div>

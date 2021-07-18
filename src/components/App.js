@@ -4,6 +4,7 @@ import * as BooksAPI from '../requests/BooksAPI';
 import { Search } from './Search';
 import { BookList } from './BookList';
 import { PageNotFound } from './PageNotFound';
+import { Loader } from './Loader';
 import '../styles/App.css';
 
 class BooksApp extends React.Component {
@@ -30,30 +31,34 @@ class BooksApp extends React.Component {
     render() {
         return (
             <div className="app">
-                <BrowserRouter>
-                    <Switch>
-                        <Route path="/search" render={() => <Search />} />
-                        <Route
-                            exact
-                            path="/"
-                            render={() => (
-                                <div className="list-books">
-                                    <div className="list-books-title">
-                                        <h1>MyReads</h1>
+                {this.state.books.length ? (
+                    <BrowserRouter>
+                        <Switch>
+                            <Route path="/search" render={() => <Search />} />
+                            <Route
+                                exact
+                                path="/"
+                                render={() => (
+                                    <div className="list-books">
+                                        <div className="list-books-title">
+                                            <h1>MyReads</h1>
+                                        </div>
+                                        <BookList
+                                            books={this.state.books}
+                                            changeShelf={this.changeShelf}
+                                        />
+                                        <div className="open-search">
+                                            <button>Search a book</button>
+                                        </div>
                                     </div>
-                                    <BookList
-                                        books={this.state.books}
-                                        changeShelf={this.changeShelf}
-                                    />
-                                    <div className="open-search">
-                                        <button>Search a book</button>
-                                    </div>
-                                </div>
-                            )}
-                        />
-                        <Route path="*" component={PageNotFound} />
-                    </Switch>
-                </BrowserRouter>
+                                )}
+                            />
+                            <Route path="*" component={PageNotFound} />
+                        </Switch>
+                    </BrowserRouter>
+                ) : (
+                    <Loader />
+                )}
             </div>
         );
     }

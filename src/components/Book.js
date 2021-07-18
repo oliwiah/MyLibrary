@@ -1,8 +1,12 @@
 import React from 'react';
+import { ShelfChanger } from './ShelfChanger';
+import emptyCover from '../images/emptyCover.png';
 
 export const Book = (props) => {
     const { book, books, changeShelf, id } = props;
-    console.log(book);
+    const bookCover =
+        book.imageLinks && book.imageLinks.thumbnail ? book.imageLinks.thumbnail : emptyCover;
+    const bookTitle = book.title ? book.title : 'Title not Available';
 
     return (
         <li key={id}>
@@ -13,24 +17,18 @@ export const Book = (props) => {
                         style={{
                             width: 128,
                             height: 193,
-                            backgroundImage:
-                                'url("http://books.google.com/books/content?id=PGR2AwAAQBAJ&printsec=frontcover&img=1&zoom=1&imgtk=AFLRE73-GnPVEyb7MOCxDzOYF1PTQRuf6nCss9LMNOSWBpxBrz8Pm2_mFtWMMg_Y1dx92HT7cUoQBeSWjs3oEztBVhUeDFQX6-tWlWz1-feexS0mlJPjotcwFqAg6hBYDXuK_bkyHD-y&source=gbs_api")',
+                            backgroundImage: `url(${bookCover})`,
                         }}
                     />
-                    <div className="book-shelf-changer">
-                        <select>
-                            <option value="move" disabled>
-                                Move to...
-                            </option>
-                            <option value="currentlyReading">Currently Reading</option>
-                            <option value="wantToRead">Want to Read</option>
-                            <option value="read">Read</option>
-                            <option value="none">None</option>
-                        </select>
-                    </div>
+                    <ShelfChanger book={book} books={books} changeShelf={changeShelf} />
                 </div>
-                <div className="book-title">{book.title}</div>
-                <div className="book-authors">Harper Lee</div>
+                <div className="book-title">{bookTitle}</div>
+                {book.authors &&
+                    book.authors.map((author, id) => (
+                        <div className="book-authors" key={id}>
+                            {author}
+                        </div>
+                    ))}
             </div>
         </li>
     );

@@ -5,7 +5,7 @@ export const BookList = (props) => {
     const { books, changeShelf } = props;
     const shelves = [
         { name: 'currentlyReading', title: 'Currently Reading' },
-        { name: 'wannaread', title: 'Want to Read' },
+        { name: 'wantToRead', title: 'Want to Read' },
         { name: 'read', title: 'Read' },
     ];
 

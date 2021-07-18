@@ -1,5 +1,5 @@
 import React from 'react';
-import { Route, Switch, BrowserRouter } from 'react-router-dom';
+import { Route, Switch, BrowserRouter, Link } from 'react-router-dom';
 import * as BooksAPI from '../requests/BooksAPI';
 import { Search } from './Search';
 import { BookList } from './BookList';
@@ -20,7 +20,7 @@ class BooksApp extends React.Component {
     }
 
     changeShelf = (currBook, shelf) => {
-        BooksAPI.update(currBook, shelf).then((response) => {
+        BooksAPI.update(currBook, shelf).then(() => {
             currBook.shelf = shelf;
             this.setState((prevState) => ({
                 books: prevState.books.filter((book) => book.id !== currBook.id).concat(currBook),
@@ -52,7 +52,9 @@ class BooksApp extends React.Component {
                                         </div>
                                         <BookList books={books} changeShelf={this.changeShelf} />
                                         <div className="open-search">
-                                            <button>Search a book</button>
+                                            <Link to="/search">
+                                                <button>Search a book</button>
+                                            </Link>
                                         </div>
                                     </div>
                                 )}

@@ -213,7 +213,7 @@ button:active {
 .heading {
   font-size: 15vw;
   font-weight: 800;
-  color: #6198f3;
+  color: #2F7C31;
   margin: 0;
 }
 
@@ -225,11 +225,12 @@ button:active {
 
 .homePageButton {
   width: auto;
-  height: 30px;
-  color: #6291de;
-  border-color: #6291de;
+  height: 40px;
+  color: #2F7C31;
+  border-color: #2F7C31;
+  background-color: #67b169;
   font-weight: 700;
-  font-size: 1.75vw;
+  font-size: 17px;
 }
 
 .homepageLink {
